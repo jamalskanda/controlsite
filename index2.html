@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Control Instruments provides innovative Time Attendance & access control solutions including biometric systems, time attendance software, and security products.">
+  <meta name="keywords" content="access control, biometric systems, time attendance, security solutions, Guard Monitoring systems">
+  <title>Control Instruments Limited | Secure Access Control Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #004080;
+      --primary-dark: #003366;
+      --secondary: #0066cc;
+      --accent: #ff6b00;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --success: #28a745;
+      --error: #dc3545;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563013546-72e5c5b74c8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: fadeIn 1.5s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Products Section */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .card-img i {
+      font-size: 4rem;
+      color: var(--primary);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card .btn {
+      align-self: center;
+      margin-top: auto;
+    }
+
+    /* Catalogue Section */
+    .catalogue {
+      text-align: center;
+      background: var(--light);
+      padding: 3rem 2rem;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+
+    .catalogue h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .catalogue p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      margin-bottom: 2rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .contact-details {
+      list-style: none;
+    }
+
+    .contact-details li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details i {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    /* Form Styles */
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 500;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+    }
+
+    .required::after {
+      content: '*';
+      color: var(--error);
+      margin-left: 4px;
+    }
+
+    input, textarea, select {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+    }
+
+    input.error, textarea.error, select.error {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    button {
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Form Status Messages */
+    .form-status {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .form-status.success {
+      background-color: #d4edda;
+      color: var(--success);
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-status.error {
+      background-color: #f8d7da;
+      color: var(--error);
+      border: 1px solid #f5c6cb;
+    }
+
+    .form-loading {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-loading i {
+      animation: spin 1s linear infinite;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    /* Image Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 2% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .close-modal:hover,
+    .close-modal:focus {
+      color: var(--accent);
+    }
+
+    .image-container {
+      max-width: 100%;
+      max-height: 80vh;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .image-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    .image-nav button {
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .image-nav button:hover {
+      background: var(--primary-dark);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-column p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.8;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { 
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .about-content,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.3s;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+      }
+      
+      .section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 15px;
+      }
+      
+      .image-container {
+        max-height: 60vh;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        padding: 4rem 1.5rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .form-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <a href="#" class=""><i class="fas fa-shield-alt"></i>Control Instruments Limited</a>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Innovative Time Attendance & Access Control Solutions</h2>
+    <p>Secure, reliable, and smart technology for your business. Trusted by organizations for premium security systems.</p>
+    <div class="hero-buttons">
+      <a href="#products" class="btn btn-primary">Explore Products</a>
+      <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-title">
+      <h2>Our Products</h2>
+      <p>Discover our range of cutting-edge security and access control solutions</p>
+    </div>
+    
+    <div class="services">
+      <div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Time Attendance Software">
+        </div>
+        <h3>Web-Based Time Attendance Software</h3>
+        <p>UTIME Master designed for comprehensive workforce management with real-time analytics and reporting.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('time-attendance')">Learn More</button>
+      </div>
+      
+      <div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fingerprint Biometric Devices">
+        </div>
+        <h3>Fingerprint Biometric Devices</h3>
+        <p>High-security fingerprint recognition systems for accurate identification and access control.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('fingerprint')">Learn More</button>
+      </div>
+      
+      <div class="card">
+        <div class="card-img">
+          <img src="https://i.ibb.co/XZCxH3S7/facepro-1.jpg" alt="facepro-1" border="0">  
+        </div>
+        <h3>Face Biometric Systems</h3>
+        <p>Advanced facial recognition solutions for seamless Time Attendance & access control systems.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('face-biometric')">Learn More</button>
+      </div>
+      
+      <div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Access Control Systems">
+        </div>
+        <h3>Access Control Systems</h3>
+        <p>Comprehensive access control solutions including card readers, electronic locks, and gate automation.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('access-control')">Learn More</button>
+      </div>
+      
+      <div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Guard Monitoring Systems">
+        </div>
+        <h3>Guard Monitoring Systems</h3>
+        <p>Advanced solutions for monitoring security personnel and ensuring round-the-clock facility protection.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('guard-monitoring')">Learn More</button>
+      </div>
+      
+      <div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="CCTV Camera">
+        </div>
+        <h3>CCTV Surveillance Systems</h3>
+        <p>High-definition CCTV cameras and monitoring systems for complete visual security coverage.</p>
+        <button class="btn btn-primary" onclick="loadProductImages('cctv')">Learn More</button>
+      </div>
+    </div>
+
+    <div class="catalogue">
+      <h3>Download Our Product Catalogue</h3>
+      <p>Get detailed information about all our products and services in a comprehensive PDF document.</p>
+      <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Download Catalogue (PDF)</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-title">
+      <h2>About Us</h2>
+      <p>Learn more about our company and what makes us different</p>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Your Trusted Security Partner</h3>
+        <p>Control Instruments Limited is a trusted provider of innovative access control systems. We specialize in Granding products including time attendance, fingerprint, and face biometric solutions to meet modern security needs.</p>
+        <p>With over 20 years of experience in the industry, we've helped hundreds of businesses secure their premises and streamline their access control processes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>Get in touch with us for inquiries, quotes, or support</p>
+    </div>
+    
+    <div class="contact-container">
+      <div>
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <ul class="contact-details">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Address</h4>
+                <p>Nacico Plaza, Landies Road, Nairobi, Kenya</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Phone</h4>
+                <p>+254723538784, +254721905572</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>sales@controlinstrumentskenya.com</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Business Hours</h4>
+                <p>Monday - Friday: 9:00 AM - 5:30 PM</p>
+                <p>Saturday: 9:00 AM - 1:00 PM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="form-container">
+        <h3>Send Us a Message</h3>
+        <form id="contact-form" action="https://formspree.io/f/xvgbdraq" method="POST">
+          <div class="form-group">
+            <label for="name" class="required">Your Name</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error-message" id="name-error">Please enter your name</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="required">Your Email</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error-message" id="email-error">Please enter a valid email address</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="required">Your Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+            <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company">
+          </div>
+          
+          <div class="form-group">
+            <label for="service" class="required">Interest Service</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="time-attendance">Time Attendance Systems</option>
+              <option value="biometric">Biometric Systems</option>
+              <option value="access-control">Access Control</option>
+              <option value="cctv">CCTV Systems</option>
+              <option value="guard-monitoring">Guard Monitoring</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message" id="service-error">Please select a service</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="required">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+            <div class="error-message" id="subject-error">Please enter a subject</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="required">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="error-message" id="message-error">Please enter your message</div>
+          </div>
+          
+          <button type="submit" id="submit-btn">Send Message</button>
+          
+          <div class="form-loading" id="form-loading">
+            <i class="fas fa-spinner"></i>
+            <p>Sending your message...</p>
+          </div>
+          
+          <div class="form-status success" id="form-success">
+            <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
+          </div>
+          
+          <div class="form-status error" id="form-error">
+            <i class="fas fa-exclamation-circle"></i> Sorry, there was an error sending your message. Please try again.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Control Instruments Limited</h3>
+        <p>Providing innovative security solutions for over 20 years. Trusted by businesses for premium access control systems.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Time Attendance Systems</a></li>
+          <li><a href="#">Fingerprint Biometrics</a></li>
+          <li><a href="#">Face Recognition Systems</a></li>
+          <li><a href="#">Access Control Solutions</a></li>
+          <li><a href="#">CCTV Surveillance</a></li>
+          <li><a href="#">Guard Monitoring Systems</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Nacico Plaza, Landies Road, Nairobi</p>
+        <p><i class="fas fa-phone"></i> +254723538784, +254721905572</p>
+        <p><i class="fas fa-envelope"></i> sales@controlinstrumentskenya.com</p>
+        <p><i class="fas fa-clock"></i> Mon-Fri: 9:00AM - 5:30PM</p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2025 Control Instruments Limited. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <img id="imageViewer" class="image-container" src="" alt="Product Image">
+      <div class="image-nav">
+        <button id="prevImage" onclick="switchImage(-1)">Previous</button>
+        <button id="nextImage" onclick="switchImage(1)">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Form validation and submission handling
+    const form = document.getElementById('contact-form');
+    const formLoading = document.getElementById('form-loading');
+    const formSuccess = document.getElementById('form-success');
+    const formError = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Validate email format
+    function isValidEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    // Validate phone number (basic validation)
+    function isValidPhone(phone) {
+      const re = /^[\+]?[0-9\s\-\(\)]{8,}$/;
+      return re.test(phone);
+    }
+
+    // Show error for a specific field
+    function showError(fieldId, errorId, message) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(errorId);
+      
+      field.classList.add('error');
+      errorElement.textContent = message;
+      errorElement.classList.add('show');
+    }
+
+    // Clear error for a specific field
+    function clearError(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(errorId);
+      
+      field.classList.remove('error');
+      errorElement.classList.remove('show');
+    }
+
+    // Validate the entire form
+    function validateForm() {
+      let isValid = true;
+      
+      // Validate name
+      const name = document.getElementById('name').value.trim();
+      if (name === '') {
+        showError('name', 'name-error', 'Please enter your name');
+        isValid = false;
+      } else {
+        clearError('name', 'name-error');
+      }
+      
+      // Validate email
+      const email = document.getElementById('email').value.trim();
+      if (email === '') {
+        showError('email', 'email-error', 'Please enter your email address');
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        showError('email', 'email-error', 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        clearError('email', 'email-error');
+      }
+      
+      // Validate phone
+      const phone = document.getElementById('phone').value.trim();
+      if (phone === '') {
+        showError('phone', 'phone-error', 'Please enter your phone number');
+        isValid = false;
+      } else if (!isValidPhone(phone)) {
+        showError('phone', 'phone-error', 'Please enter a valid phone number');
+        isValid = false;
+      } else {
+        clearError('phone', 'phone-error');
+      }
+      
+      // Validate service
+      const service = document.getElementById('service').value;
+      if (service === '') {
+        showError('service', 'service-error', 'Please select a service');
+        isValid = false;
+      } else {
+        clearError('service', 'service-error');
+      }
+      
+      // Validate subject
+      const subject = document.getElementById('subject').value.trim();
+      if (subject === '') {
+        showError('subject', 'subject-error', 'Please enter a subject');
+        isValid = false;
+      } else {
+        clearError('subject', 'subject-error');
+      }
+      
+      // Validate message
+      const message = document.getElementById('message').value.trim();
+      if (message === '') {
+        showError('message', 'message-error', 'Please enter your message');
+        isValid = false;
+      } else {
+        clearError('message', 'message-error');
+      }
+      
+      return isValid;
+    }
+
+    // Add input event listeners to clear errors as user types
+    document.getElementById('name').addEventListener('input', () => {
+      clearError('name', 'name-error');
+    });
+
+    document.getElementById('email').addEventListener('input', () => {
+      clearError('email', 'email-error');
+    });
+
+    document.getElementById('phone').addEventListener('input', () => {
+      clearError('phone', 'phone-error');
+    });
+
+    document.getElementById('service').addEventListener('change', () => {
+      clearError('service', 'service-error');
+    });
+
+    document.getElementById('subject').addEventListener('input', () => {
+      clearError('subject', 'subject-error');
+    });
+
+    document.getElementById('message').addEventListener('input', () => {
+      clearError('message', 'message-error');
+    });
+
+    // Form submission handler
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Validate the form
+      if (!validateForm()) {
+        return;
+      }
+      
+      // Hide any previous messages
+      formSuccess.style.display = 'none';
+      formError.style.display = 'none';
+      formLoading.style.display = 'block';
+      submitBtn.disabled = true;
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          formSuccess.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        formError.style.display = 'block';
+      } finally {
+        formLoading.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        // Scroll to form status message
+        const formStatus = document.querySelector('.form-status[style*="display: block"]');
+        if (formStatus) {
+          formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Image Modal functionality
+    const imageModal = document.getElementById('imageModal');
+    const imageViewer = document.getElementById('imageViewer');
+    const prevImageBtn = document.getElementById('prevImage');
+    const nextImageBtn = document.getElementById('nextImage');
+
+    // Define the JPG image paths for each product category
+    const productImages = {
+      'time-attendance': [
+        'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      ],
+      'fingerprint': [
+        'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      ],
+      'face-biometric': [
+        'https://i.ibb.co/WLRhx2G/facepro1.jpg',
+        'https://i.ibb.co/JWF7X7zY/logo.jpg'
+      ],
+      'access-control': [
+        'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      ],
+      'guard-monitoring': [
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      ],
+      'cctv': [
+        'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      ]
+    };
+
+    let currentImageIndex = 0;
+    let currentProductImages = [];
+
+    // Function to load product images
+    function loadProductImages(productType) {
+      currentProductImages = productImages[productType] || [];
+      currentImageIndex = 0;
+      
+      if (currentProductImages.length > 0) {
+        openModal();
+        loadCurrentImage();
+      } else {
+        alert('No images available for this product.');
+      }
+    }
+
+    // Function to open the modal
+    function openModal() {
+      imageModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      imageModal.style.display = 'none';
+      document.body.style.overflow = ''; // Re-enable scrolling
+    }
+
+    // Function to load the current image
+    function loadCurrentImage() {
+      if (currentProductImages.length > 0) {
+        imageViewer.src = currentProductImages[currentImageIndex];
+        
+        // Update button states
+        prevImageBtn.disabled = currentImageIndex === 0;
+        nextImageBtn.disabled = currentImageIndex === currentProductImages.length - 1;
+      }
+    }
+
+    // Function to switch between images
+    function switchImage(direction) {
+      currentImageIndex += direction;
+      loadCurrentImage();
+    }
+
+    // Close modal when clicking outside the content
+    window.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && imageModal.style.display === 'block') {
+        closeModal();
+      }
+    });
+
+    // Initialize the page when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // All event listeners are already set up above
+      console.log('Control Instruments website loaded successfully');
+    });
+  </script>
+</body>
+</html>

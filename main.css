@@ -26,7 +26,7 @@ body {
 
 /* Header & Navigation */
 header {
-  background: var(--primary);
+  background:white;
   color: white;
   padding: 0.8rem 2rem;
   display: flex;
@@ -72,9 +72,9 @@ nav {
 }
 
 .nav-links a {
-  color: white;
+  color: black;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 800;
   transition: color 0.3s;
   position: relative;
   padding: 0.5rem 0;

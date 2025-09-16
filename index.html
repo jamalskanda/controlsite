@@ -7,17 +7,922 @@
   <meta name="keywords" content="access control, biometric systems, time attendance, security solutions, Guard Monitoring systems">
   <title>Control Instruments Limited | Secure Access Control Solutions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="main.css">
+  <style>
+    :root {
+      --primary: #004080;
+      --primary-dark: #003366;
+      --secondary: #0066cc;
+      --accent: #ff6b00;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --success: #28a745;
+      --error: #dc3545;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: white;
+      color: white;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      width: 160px;
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: black;
+      text-decoration: none;
+      font-weight: 800;
+      transition: color 0.3s;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: black;
+      z-index: 1001;
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/products/general/hero-bg.png') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: fadeIn 1.5s;
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-align: center;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Products Section */
+    .services {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .card-img i {
+      font-size: 3rem;
+      color: var(--primary);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.5s;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card .btn {
+      align-self: center;
+      margin-top: auto;
+      padding: 0.8rem 1.5rem;
+    }
+
+    /* Catalogue Section */
+    .catalogue {
+      text-align: center;
+      background: var(--light);
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+
+    .catalogue h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .catalogue p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-info {
+      margin-bottom: 2rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .contact-details {
+      list-style: none;
+    }
+
+    .contact-details li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details i {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      margin-top: 0.3rem;
+      min-width: 20px;
+    }
+
+    /* Form Styles */
+    .form-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-container h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 500;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+    }
+
+    .required::after {
+      content: '*';
+      color: var(--error);
+      margin-left: 4px;
+    }
+
+    input, textarea, select {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      -webkit-appearance: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+    }
+
+    input.error, textarea.error, select.error {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    button {
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Form Status Messages */
+    .form-status {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .form-status.success {
+      background-color: #d4edda;
+      color: var(--success);
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-status.error {
+      background-color: #f8d7da;
+      color: var(--error);
+      border: 1px solid #f5c6cb;
+    }
+
+    .form-loading {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-loading i {
+      animation: spin 1s linear infinite;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    /* Image Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+      touch-action: pinch-zoom;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      padding: 20px;
+      width: 95%;
+      max-width: 1000px;
+      border-radius: 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .close-modal {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .close-modal:hover,
+    .close-modal:focus {
+      color: var(--accent);
+    }
+
+    .image-container {
+      max-width: 100%;
+      max-height: 70vh;
+      margin: 0 auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .image-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .image-nav button {
+      padding: 12px 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+
+    .image-nav button:hover {
+      background: var(--primary-dark);
+    }
+
+    .image-nav button:disabled {
+      background: var(--gray);
+      cursor: not-allowed;
+    }
+
+    /* Touch Swipe Area for Mobile */
+    .swipe-area {
+      position: absolute;
+      top: 0;
+      width: 20%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .swipe-left {
+      left: 0;
+    }
+
+    .swipe-right {
+      right: 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem 1rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-column p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.8;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary);
+    }
+
+    /* Mobile Phone Link */
+    .mobile-call {
+      display: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { 
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    /* Responsive Design */
+    @media (min-width: 576px) {
+      .services {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .hero-buttons {
+        flex-direction: row;
+        max-width: none;
+      }
+      
+      .btn {
+        min-width: 180px;
+        width: auto;
+      }
+    }
+
+    @media (min-width: 768px) {
+      header {
+        padding: 0.8rem 2rem;
+      }
+      
+      .section {
+        padding: 4rem 2rem;
+      }
+      
+      .hero {
+        padding: 5rem 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .nav-links {
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        background: transparent;
+      }
+      
+      .nav-links a {
+        color: black;
+      }
+      
+      .hamburger {
+        display: none;
+      }
+      
+      .mobile-call {
+        display: none;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
+        padding: 2rem;
+      }
+      
+      .nav-links.active {
+        left: 0;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+      }
+      
+      .nav-links a {
+        color: white;
+        font-size: 1.2rem;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .mobile-call {
+        display: block;
+        position: fixed;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: 60px;
+        height: 60px;
+        background: var(--success);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        z-index: 998;
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+        }
+      }
+      
+      .card-img {
+        height: 150px;
+      }
+    }
+
+    /* High-resolution devices */
+    @media (min-width: 1200px) {
+      .section {
+        padding: 5rem 2rem;
+      }
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="logo-container">
-
       <a href="#">
-    <img src="images/products/logo.png" alt="Control Instruments Logo" style="width: 200px; height: auto;"
-       </a>
-
+        <img src="images/products/logo.png" alt="Control Instruments Logo">
+      </a>
     </div>
     
     <nav>
@@ -32,6 +937,10 @@
       </div>
     </nav>
   </header>
+
+  <a href="tel:+254723538784" class="mobile-call">
+    <i class="fas fa-phone"></i>
+  </a>
 
   <section class="hero" id="home">
     <h2>Innovative Time Attendance & Access Control Solutions</h2>
@@ -55,7 +964,8 @@
         </div>
         <h3>Web-Based Time Attendance Software</h3>
         <p>UTIME Master designed for comprehensive workforce management with real-time analytics and reporting.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('time-attendance')">Learn More</button>
+        
+        <button class="btn btn-primary" onclick="downloadCatalogue('time-attendance')">Learn More</button>
       </div>
       
       <div class="card">
@@ -64,7 +974,7 @@
         </div>
         <h3>Fingerprint Biometric Devices</h3>
         <p>High-security fingerprint recognition systems for accurate identification and access control.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('fingerprint')">Learn More</button>
+        <button class="btn btn-primary" onclick="downloadCatalogue('fingerprint')">Learn More</button>
       </div>
       
       <div class="card">
@@ -73,7 +983,7 @@
         </div>
         <h3>Face Biometric Systems</h3>
         <p>Advanced facial recognition solutions for seamless Time Attendance & access control systems.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('face-biometric')">Learn More</button>
+        <button class="btn btn-primary" onclick="downloadCatalogue('face-biometric')">Learn More</button>
       </div>
       
       <div class="card">
@@ -82,7 +992,7 @@
         </div>
         <h3>Access Control Systems</h3>
         <p>Comprehensive access control solutions including card readers, electronic locks, and gate automation.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('access-control')">Learn More</button>
+        <button class="btn btn-primary" onclick="downloadCatalogue('access-control')">Learn More</button>
       </div>
       
       <div class="card">
@@ -91,7 +1001,7 @@
         </div>
         <h3>Guard Monitoring Systems</h3>
         <p>Advanced solutions for monitoring security personnel and ensuring round-the-clock facility protection.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('guard-monitoring')">Learn More</button>
+        <button class="btn btn-primary" onclick="downloadCatalogue('guard-monitoring')">Learn More</button>
       </div>
       
       <div class="card">
@@ -100,14 +1010,8 @@
         </div>
         <h3>CCTV Surveillance Systems</h3>
         <p>High-definition CCTV cameras and monitoring systems for complete visual security coverage.</p>
-        <button class="btn btn-primary" onclick="loadProductImages('cctv')">Learn More</button>
+        <button class="btn btn-primary" onclick="downloadCatalogue('cctv')">Learn More</button>
       </div>
-    </div>
-
-    <div class="catalogue">
-      <h3>Download Our Product Catalogue</h3>
-      <p>Get detailed information about all our products and services in a comprehensive PDF document.</p>
-      <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Download Catalogue (PDF)</a>
     </div>
   </section>
 
@@ -192,11 +1096,6 @@
           </div>
           
           <div class="form-group">
-            <label for="company">Company Name</label>
-            <input type="text" id="company" name="company">
-          </div>
-          
-          <div class="form-group">
             <label for="service" class="required">Interest Service</label>
             <select id="service" name="service" required>
               <option value="">Select a service</option>
@@ -275,7 +1174,7 @@
         <p><i class="fas fa-map-marker-alt"></i> Nacico Plaza, Landies Road, Nairobi</p>
         <p><i class="fas fa-phone"></i> +254723538784, +254721905572</p>
         <p><i class="fas fa-envelope"></i> sales@controlinstrumentskenya.com</p>
-        <p><i class="fas fa-clock"></i> Mon-Fri: 9:00AM - 5:30PM</p>
+        <p><i class="fas fa-clock"></i> Mon-Frid: 9:00AM - 5:30PM</p>
       </div>
     </div>
 
@@ -288,6 +1187,8 @@
   <div id="imageModal" class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
+      <div class="swipe-area swipe-left" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)"></div>
+      <div class="swipe-area swipe-right" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)"></div>
       <img id="imageViewer" class="image-container" src="" alt="Product Image">
       <div class="image-nav">
         <button id="prevImage" onclick="switchImage(-1)">Previous</button>
@@ -304,9 +1205,11 @@
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      body.classList.toggle('no-scroll');
       hamburger.innerHTML = navLinks.classList.contains('active') 
         ? '<i class="fas fa-times"></i>' 
         : '<i class="fas fa-bars"></i>';
@@ -316,6 +1219,7 @@
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        body.classList.remove('no-scroll');
         hamburger.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
@@ -515,6 +1419,31 @@
       });
     });
 
+    // Catalogue download functionality - MODIFIED
+    function downloadCatalogue(type) {
+      // Map product types to PDF files
+      const catalogues = {
+        'time-attendance': 'Time-Attendance-Catalogue.pdf',
+        'fingerprint': 'Biometric-Systems-Catalogue.pdf',
+        'face-biometric': 'Biometric-Systems-Catalogue.pdf',
+        'access-control': 'Access-Control-Catalogue.pdf',
+        'guard-monitoring': 'Guard-Monitoring-Catalogue.pdf',
+        'cctv': 'CCTV-Systems-Catalogue.pdf',
+        'biometric': 'Biometric-Systems-Catalogue.pdf'
+      };
+      
+      const pdfFile = catalogues[type] || 'General-Catalogue.pdf';
+      const pdfPath = 'pdfs/' + pdfFile;
+      
+      // Create a temporary link to trigger download
+      const link = document.createElement('a');
+      link.href = pdfPath;
+      link.download = pdfFile;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
     // Image Modal functionality
     const imageModal = document.getElementById('imageModal');
     const imageViewer = document.getElementById('imageViewer');
@@ -574,13 +1503,15 @@
     // Function to open the modal
     function openModal() {
       imageModal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('no-scroll');
     }
 
     // Function to close the modal
     function closeModal() {
       imageModal.style.display = 'none';
-      document.body.style.overflow = ''; // Re-enable scrolling
+      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     }
 
     // Function to load the current image
@@ -600,6 +1531,37 @@
       loadCurrentImage();
     }
 
+    // Touch events for mobile image swiping
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function handleTouchStart(event) {
+      touchStartX = event.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(event) {
+      touchEndX = event.changedTouches[0].screenX;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swipe left - next image
+        if (currentImageIndex < currentProductImages.length - 1) {
+          switchImage(1);
+        }
+      }
+      
+      if (touchEndX > touchStartX + swipeThreshold) {
+        // Swipe right - previous image
+        if (currentImageIndex > 0) {
+          switchImage(-1);
+        }
+      }
+    }
+
     // Close modal when clicking outside the content
     window.addEventListener('click', (e) => {
       if (e.target === imageModal) {
@@ -609,14 +1571,22 @@
 
     // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && imageModal.style.display === 'block') {
-        closeModal();
+      if (e.key === 'Escape') {
+        if (imageModal.style.display === 'block') {
+          closeModal();
+        }
       }
     });
 
     // Initialize the page when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-      // All event listeners are already set up above
+      // Add touch detection for mobile devices
+      if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+      } else {
+        document.body.classList.add('no-touch-device');
+      }
+      
       console.log('Control Instruments website loaded successfully');
     });
   </script>

@@ -107,7 +107,7 @@ nav {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/general/hero-bg.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/products/general/hero-bg.png') no-repeat center center/cover;
   color: white;
   text-align: center;
   padding: 6rem 2rem;
@@ -271,6 +271,18 @@ nav {
 .card .btn {
   align-self: center;
   margin-top: auto;
+}
+
+/* Catalogue Modal Styles */
+.catalogue-options .btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.catalogue-options .btn:last-child {
+  margin-bottom: 0;
 }
 
 /* Catalogue Section */

@@ -1154,6 +1154,7 @@
           <li><a href="#products">Products</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#vat">Vat Calculator</a></li>
         </ul>
       </div>
       
@@ -1424,8 +1425,8 @@
       // Map product types to PDF files
       const catalogues = {
         'time-attendance': 'Time-Attendance-Catalogue.pdf',
-        'fingerprint': 'Biometric-Systems-Catalogue.pdf',
-        'face-biometric': 'Biometric-Systems-Catalogue.pdf',
+        'fingerprint': 'TFT500p-Catalogue.pdf',
+        'face-biometric': 'Facepro1-Catalogue.pdf',
         'access-control': 'Access-Control-Catalogue.pdf',
         'guard-monitoring': 'Guard-Monitoring-Catalogue.pdf',
         'cctv': 'CCTV-Systems-Catalogue.pdf',
@@ -1433,7 +1434,7 @@
       };
       
       const pdfFile = catalogues[type] || 'General-Catalogue.pdf';
-      const pdfPath = 'pdfs/' + pdfFile;
+      const pdfPath = 'PDF/' + pdfFile;
       
       // Create a temporary link to trigger download
       const link = document.createElement('a');
